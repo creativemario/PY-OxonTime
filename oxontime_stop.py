@@ -24,7 +24,7 @@ class stop:
         stopLine4 = "\n\tnaptan_code: " + str(self.naptan_code)
         stopLine5 = "\n\ttime: " + str(self.time)
         
-        calls = "\n\tCalls: \n\t\t"
+        calls = "\n\tcalls: \n\t\t"
         for call in self.calls:
             calls += str(call)
             calls += "\n\t\t"
