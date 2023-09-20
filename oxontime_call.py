@@ -37,19 +37,32 @@ class call:
         self.wheelchair_access = call["wheelchair_access"]
         self.trip_status = call["trip_status"]
         
+    def getETA(self):
+        date_format = "%Y-%m-%d %H:%M:%S"
+        time_expected = datetime.strptime(self.expected_arrival_time, date_format)
+        now = datetime.now()
+        diff = time_expected - now
+        diff_minutes = int(diff.total_seconds() / 60)
+        
+        if (diff_minutes == 0):
+            return "Due"
+        elif(diff_minutes <=-1):
+            return "Late"
+        else:
+            return str(diff_minutes) + " Mins"
+        
+        
+        
     def __str__(self):
         formattedString = ""
         stopTitle = ""
         
         stopTitle = "Call (" + self.route_code +"): \t(P) " + self.aimed_arrival_time
         if(self.monitored):
-            date_format = "%Y-%m-%d %H:%M:%S"
-            time_expected = datetime.strptime(self.expected_arrival_time, date_format)
-            now = datetime.now()
-            diff = time_expected - now
-            diff_minutes = diff.total_seconds() / 60
-            stopTitle += " | (T) ETA: " + str(int(diff_minutes)) + " Mins (" + self.expected_arrival_time + ")"
+            stopTitle += " | (T) ETA: " + self.getETA() + " (" + self.expected_arrival_time + ")"
+            stopTitle += "\n\t\t\t\t\t\t\t  (" + str(self.gpslat) +"," + str(self.gpslong) + ")\n\t\t\t\t\t\t\t  https://www.openstreetmap.org/#map=17/"+self.gpslat+"/" +self.gpslong
         formattedString += stopTitle
         return formattedString
         
+    
     
