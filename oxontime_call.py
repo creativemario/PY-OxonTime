@@ -60,7 +60,7 @@ class call:
         stopTitle = "Call (" + self.route_code +"): \t(P) " + self.aimed_arrival_time
         if(self.monitored):
             stopTitle += " | (T) ETA: " + self.getETA() + " (" + self.expected_arrival_time + ")"
-            stopTitle += "\n\t\t\t\t\t\t\t  (" + str(self.gpslat) +"," + str(self.gpslong) + ")\n\t\t\t\t\t\t\t  https://www.openstreetmap.org/#map=17/"+self.gpslat+"/" +self.gpslong
+            stopTitle += "\n\t\t\t\t\t\t\t  (" + str(self.gpslat) +"," + str(self.gpslong) + ")\n\t\t\t\t\t\t\t  https://embed.waze.com/iframe?zoom=15&lat="+self.gpslat+"&lon="+self.gpslong+"&pin=1&desc=0"
         formattedString += stopTitle
         return formattedString
         
