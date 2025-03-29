@@ -1,6 +1,5 @@
-from models import DepartureBoard
+from models import Operator
 
-# operators = Operator.create_operators()
-# print(operators)
+operators = Operator.create_operators()
+print(operators)
 
-DepartureBoard.get_departure_board("340021035SOU")
