@@ -26,7 +26,7 @@ class Operator:
         return self.__str__()
 
 # Example function to create instances of Operator from the data
-def create_operators():
+def update_operators():
     # Define the URL
     url = "https://oxontime.com/pwi/getOperators"
 
